@@ -1,10 +1,3 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
@@ -30,7 +23,6 @@
         headerToggle();
       }
     });
-
   });
 
   /**
@@ -153,7 +145,7 @@
     });
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
+      filters .addEventListener('click', function() {
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
         initIsotope.arrange({
@@ -164,7 +156,6 @@
         }
       }, false);
     });
-
   });
 
   /**
@@ -221,14 +212,13 @@
       } else {
         navmenulink.classList.remove('active');
       }
-    })
+    });
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-})();
-
- document.getElementById('contactForm').addEventListener('submit', function(event) {
+  // Contact Form Submission
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Show loading message
@@ -271,3 +261,4 @@
       errorMessage.style.display = 'block';
     });
   });
+})();
