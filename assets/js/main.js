@@ -227,3 +227,47 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+ document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Show loading message
+    const loadingMessage = document.querySelector('.loading');
+    const successMessage = document.querySelector('.sent-message');
+    const errorMessage = document.querySelector('.error-message');
+    
+    loadingMessage.style.display = 'block';
+    successMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+
+    // Create a FormData object to send the form data
+    const formData = new FormData(this);
+
+    // Send the form data using fetch
+    fetch('/', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Show success message
+        loadingMessage.style.display = 'none';
+        successMessage.style.display = 'block';
+        this.reset(); // Reset the form
+      } else {
+        // Show error message
+        loadingMessage.style.display = 'none';
+        errorMessage.textContent = 'There was a problem with your submission. Please try again.';
+        errorMessage.style.display = 'block';
+      }
+    })
+    .catch(error => {
+      // Show error message
+      loadingMessage.style.display = 'none';
+      errorMessage.textContent = 'There was a problem with your submission. Please try again.';
+      errorMessage.style.display = 'block';
+    });
+  });
